@@ -1,7 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
 
-interface StringChecker { boolean checkString(String s); }
+interface StringChecker { 
+  boolean checkString(String s); 
+}
+
+class LongString implements StringChecker {
+  public boolean checkString(String s) {
+    return s.length() > 5;
+  }
+}
+
+class ShortString implements StringChecker {
+  public boolean checkString(String s) {
+    return s.length() <= 5;
+  }
+}
+
+class StartsWithF implements StringChecker {
+  public boolean checkString(String s) {
+    return s.toUpperCase().charAt(0) == 'F';
+  }
+}
 
 class ListExamples {
 
@@ -12,7 +32,7 @@ class ListExamples {
     List<String> result = new ArrayList<>();
     for(String s: list) {
       if(sc.checkString(s)) {
-        result.add(0, s);
+        result.add(s);
       }
     }
     return result;
@@ -40,7 +60,7 @@ class ListExamples {
     }
     while(index2 < list2.size()) {
       result.add(list2.get(index2));
-      index1 += 1;
+      index2 += 1;
     }
     return result;
   }
